@@ -19,7 +19,7 @@ Imagine que você ficou responsável por realizar uma análise exploratória sob
 python --version
 ```
 
-6. Tenha um editor de código instalado. Recomendamos utilizar o VSCode.
+6. Tenha um editor de código instalado. Recomendo utilizar o VSCode.
 
 # Passo a Passo
 
