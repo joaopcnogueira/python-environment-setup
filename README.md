@@ -1,4 +1,4 @@
-# Setup Ambiente Python
+# Setup de Ambientes Virtuais do Python
 
 # Motivação
 
