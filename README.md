@@ -251,3 +251,41 @@ Agora podemos, por exemplo, criar um notebook em `notebooks/01_carregando_dados.
 ```python
 from src.data import load_data
 ```
+
+18. **[OPCIONAL]** Dependências de Desenvolvimento
+
+Uma boa prática é criar dois arquivos de registro de dependências: `requirements.in` e `requirements-dev.in`. No segundo arquivo, anotamos apenas ferramentas e pacotes necessários para a experiência de desenvolvimento, como `jupyter` e o `pip-tools`. Para facilitar o gerenciamento, podemos utilizar um **Makefile**:
+
+```makefile
+.PHONY: requirements dependencies
+
+# build requirements.txt from requirements.in only if
+# requirements.in is modified
+requirements.txt: requirements.in
+	pip-compile requirements.in
+
+# build requirements-dev.txt from requirements-dev.in only if
+# requirements-dev.in is modified
+requirements-dev.txt: requirements-dev.in
+	pip-compile requirements-dev.in
+
+# build the requirements.txt and requirements-dev.txt from *.in files,
+# only if one of them is modified
+requirements: requirements.txt requirements-dev.txt
+
+# install the packagest listed on requirements.txt and requirements-dev.txt
+dependencies: requirements
+	pip install -r requirements.txt
+	pip install -r requirements-dev.txt
+```
+
+Copie o conteúdo acima e cole dentro de um arquivo chamado `Makefile`, que deve estar localizado na raiz do projeto. Agora vamos imaginar que uma nova dependência deve ser incluída, como o pacote `scikit-learn`. O passo a passo é:
+
+1. Incluir o nome `scikit-learn` no arquivo `requirements.in`.
+2. Atualizar o arquivo `requirements.txt` utilizando o Makefile, através do seguinte comando no terminal:
+
+```makefile
+make requirements
+```
+
+O mesmo deve ser feito para qualquer outra nova dependência, esteja ela no arquivo `requirements.in` ou `requirements-dev.in`.
