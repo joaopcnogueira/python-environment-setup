@@ -289,3 +289,25 @@ make requirements
 ```
 
 O mesmo deve ser feito para qualquer outra nova dependência, esteja ela no arquivo `requirements.in` ou `requirements-dev.in`.
+
+Dessa forma, o projeto até fica com os seguintes arquivos:
+
+```bash
+.
+├── .gitignore
+├── .venv
+│   ├── bin
+│   ├── etc
+│   ├── include
+│   ├── lib
+│   ├── pyvenv.cfg
+│   └── share
+├── data
+├── Makefile
+├── notebooks
+├── requirements.in
+├── requirements.txt
+└── src
+    ├── __init__.py
+    └── data.py
+```
