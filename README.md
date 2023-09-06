@@ -46,7 +46,7 @@ python -m venv .venv
 6. Ative o ambiente virtual do Python
 
 ```bash
-source -m venv .venv
+source .venv/bin/activate
 ```
 
 7. Verifique se de fato o ambiente foi ativado solicitando qual python está sendo utilizado com o seguinte comando
